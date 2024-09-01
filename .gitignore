@@ -1,0 +1,31 @@
+node_modules
+build
+coverage
+*/node_modules
+*/build
+.secrets.json
+secrets.json
+*/dist
+
+.env
+
+notes
+
+# Logs
+*/logs
+*.log
+
+#Hardhat files
+*/cache
+*/artifacts
+*/typechain
+cache
+artifacts
+typechain
+typechain-types
+
+#Plugin Files
+coverage.json
+
+package-lock.json
+.vscode
