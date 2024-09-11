@@ -29,3 +29,5 @@ coverage.json
 
 package-lock.json
 .vscode
+
+arguments*.js

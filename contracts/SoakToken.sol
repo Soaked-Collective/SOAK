@@ -3,20 +3,20 @@ pragma solidity ^0.8.20;
 
 
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-
+import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import {Taxable} from "./taxable/Taxable.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract SoakToken is ERC20, Taxable, Ownable {
+contract SoakToken is ERC20, ERC20Burnable, Taxable, Ownable {
 
     event Taxation(uint8 indexed taxType, uint256 taxAmount); // taxType:  1 = transfer, 2 = buy, 3 = sell
 
     constructor(address _taxRecipient, address _treasury)
-    ERC20("SOAKed", "SOAK")
+    ERC20("SOAKed Collective", "SOAK")
     Ownable(msg.sender)
     Taxable(500, 500, 200) {
-         _mint(_treasury, 42000000000000000000000000000);
+         _mint(_treasury, 35000000000000000000000000000);
          _updateTaxRecipients(_taxRecipient, _taxRecipient, _taxRecipient);
          _setTaxExempt(msg.sender, true);
          _setTaxExempt(_treasury, true);
